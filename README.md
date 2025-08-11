@@ -19,7 +19,7 @@
 
 - 篩選酒駕判決書：copyFile.py
 - LLM 萃取：LLM萃取案件事實特徵.ipynb
-- 編碼規則：案件特徵結構化資料預處理+模型.ipynb  
+- 編碼規則：[案件特徵結構化資料預處理.ipynb](https://colab.research.google.com/drive/1URX14VOX4RbAPyzw75-jxTcu9e8q1Wl6?usp=sharing) (檔案太大傳不上來，直接去連結下載或是雲端抓)  
   - 這裡吃的資料就是 <b>案件結構化資料(還是文字內容)</b> 所以這個全部跑完預期是要有 <b>編碼後的案件結構化資料</b>
 - 描述統計：論文描述統計.ipynb
 ### 正式實驗部分
