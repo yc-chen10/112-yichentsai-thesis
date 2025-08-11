@@ -1,10 +1,12 @@
-# 中興資管 112級 蔡宜宸 論文 基於人工智慧之不能安全駕駛罪量刑因子分析
+# 中興資管 112級 蔡宜宸 基於人工智慧之不能安全駕駛罪量刑因子分析
 
-如果你正在看我的論文，想要復現，也在看程式碼了，覺得有點複雜，非常建議先看各式各樣每個小實驗對應的[流程圖](https://github.com/yc-chen10/thesis_flow_chart/tree/main)
+如果你正在看我的論文，想要復現，也在看程式碼了，覺得有點複雜，非常建議先看各式各樣每個小實驗對應的[流程圖](https://github.com/yc-chen10/thesis_flow_chart/tree/main)，有抽象概念怎麼做在做什麼，比較好懂實驗怎麼跑的
 
-整個論文的完整實作流程圖，包含資料取得、前處理到實驗
+整個論文的完整實作流程，包含資料取得、前處理到實驗如下圖  ↓ 
 
-![實驗設計流程圖](https://github.com/yc-chen10/thesis_flow_chart/blob/main/20241212_proposal_%E5%AF%A6%E9%A9%97%E8%A8%AD%E8%A8%88%E6%B5%81%E7%A8%8B-%E7%AC%AC%201%20%E9%A1%B5.drawio.png)
+<img src="https://github.com/yc-chen10/thesis_flow_chart/blob/main/20241212_proposal_%E5%AF%A6%E9%A9%97%E8%A8%AD%E8%A8%88%E6%B5%81%E7%A8%8B-%E7%AC%AC%201%20%E9%A1%B5.drawio.png" text="實驗設計流程圖" width="80%" >
+
+
 
 ## 資料：原始判決書(所有判決書->酒駕判決書) => LLM處理後的案件結構化資料 => 文字內容編碼處理後的結構化資料
 
@@ -20,14 +22,18 @@
   - 只抓2016～2022年的原因：這個區間的刑罰上限是一樣的（論文我有寫修法歷程），資料量也比較足夠，所以才只取16～22年
 
 
-## 程式：篩選酒駕判決和LLM處理用本地跑，論文實驗一和二都是colab
-### 前處理／研究方法
+<br>
+
+## 程式：篩選酒駕判決和LLM處理用本機跑，論文實驗一和二都是colab
+### 前處理／描述統計
 
 > 除了編碼規則和描述統計的程式以外，不建議為了復現再跑一次，除非是有新資料要照這個流程處理，因為篩選+萃取花費時間24小時不間斷大概就要花兩個禮拜，萃取的部分要另外花錢，所以也不建議為了單純復現去跑。
 
 - 篩選酒駕判決書：[copyFile.py](https://github.com/yc-chen10/112-yichentsai-thesis/blob/main/copyFile.py)
+  - 因為檔案很多很肥，一樣建議本機處理，不然還要花錢買雲端空間
 - LLM 萃取：[LLM萃取案件事實特徵.ipynb](https://github.com/yc-chen10/112-yichentsai-thesis/blob/main/LLM%E8%90%83%E5%8F%96%E6%A1%88%E4%BB%B6%E4%BA%8B%E5%AF%A6%E7%89%B9%E5%BE%B5.ipynb)
-- 編碼規則：[案件特徵結構化資料預處理.ipynb](https://colab.research.google.com/drive/1URX14VOX4RbAPyzw75-jxTcu9e8q1Wl6?usp=sharing) (檔案太大傳不上來，直接去連結下載或是雲端抓)  
+  - 這個部份雖然是可以丟colab但我非常不建議，只要斷線就很麻煩，所以這一段我建議在本機跑   
+- 編碼規則：[案件特徵結構化資料預處理.ipynb](https://colab.research.google.com/drive/1URX14VOX4RbAPyzw75-jxTcu9e8q1Wl6?usp=sharing) (檔案太大傳不上來，直接去連結下載)  
   - 這裡吃的資料就是 <b>案件結構化資料(還是文字內容)</b> 所以這個全部跑完預期是要有 <b>編碼後的案件結構化資料</b>
 - 描述統計：[論文描述統計.ipynb](https://github.com/yc-chen10/112-yichentsai-thesis/blob/main/%E8%AB%96%E6%96%87%E6%8F%8F%E8%BF%B0%E7%B5%B1%E8%A8%88.ipynb)
 ### 正式實驗部分
